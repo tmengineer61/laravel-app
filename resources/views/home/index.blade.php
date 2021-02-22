@@ -10,12 +10,16 @@
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('/css/reset.css') }}">
     <link rel="stylesheet" href="{{ asset('/css/main.css')}}?{{@filemtime('public_path("css/main.css")') }}">
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <script src="{{ asset('js/app.js') }}"></script>
 </head>
 
 <body>
     <div class="main">
         <div class="header">
-
+            <div class="title">
+                <h1>テスト</h1>
+            </div>
         </div>
         <div class="contents">
             <div class="search">
@@ -30,7 +34,7 @@
             </div>
         </div>
         <div class="footer">
-            <a href="http://webservice.recruit.co.jp/"><img src="http://webservice.recruit.co.jp/banner/hotpepper-s.gif" alt="ホットペッパー Webサービス" width="135" height="17" border="0" title="ホットペッパー Webサービス"></a>
+            <a href="//webservice.recruit.co.jp/"><img src="//webservice.recruit.co.jp/banner/hotpepper-s.gif" alt="ホットペッパー Webサービス" width="135" height="17" border="0" title="ホットペッパー Webサービス"></a>
         </div>
     </div>
     <script type="text/javascript" src="{{asset('/js/jquery-3.5.1.min.js')}}"></script>
