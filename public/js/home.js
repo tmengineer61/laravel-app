@@ -20,6 +20,7 @@ $(function() {
             },
             beforeSend: function() {
                 $('.ajax-load').removeClass('hide');
+                $('.ajax-load').addClass('d-block');
             }
         })
         .done(function(data) {
@@ -33,11 +34,12 @@ $(function() {
 
     }
     function failSearchShop(error) {
-        alert('エラーです');
+        // alert('エラーです');
     }
 
     function showShop(data) {
         $('.ajax-load').addClass('hide');
+        $('.ajax-load').removeClass('d-block');
         // TODO: デザイン追加
     }
 })
