@@ -28,12 +28,12 @@
         <div class="row">
             <div class="col-xs-12 mx-auto">
                 <div class="contents">
-                    <div class="search">
+                    <div class="search mb-3">
                         <div class="description">
-                            <p>近くの店を検索する</p>
-                            <p>※取得には現在地を使用します。</p>
+                            <p class="text-center">近くの店を検索する</p>
+                            <p class="text-center">※取得には現在地を使用します。</p>
                         </div>
-                        <div class="pb-3">
+                        <div class="button mb-3 mx-auto">
                             <button type="button" id="search" class="btn btn-outline-secondary btn-block">近くの店を検索する。</button>
                         </div>
                         <div id="shop">

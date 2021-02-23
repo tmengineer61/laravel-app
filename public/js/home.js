@@ -19,13 +19,14 @@ $(function() {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             },
             beforeSend: function() {
-                $('.ajax-load').removeClass('hide');
-                $('.ajax-load').addClass('d-block');
+                $('#shop').html('<img src="/images/ajax-loading.gif" class="d-block mx-auto" />');
             }
         })
         .done(function(data) {
             if (data.status) {
                 showShop(data);
+            } else {
+                alert('エラーです');
             }
         })
         .fail(function() {
@@ -34,12 +35,10 @@ $(function() {
 
     }
     function failSearchShop(error) {
-        // alert('エラーです');
+        alert('エラーです');
     }
 
     function showShop(data) {
-        $('.ajax-load').addClass('hide');
-        $('.ajax-load').removeClass('d-block');
-        // TODO: デザイン追加
+        $('#shop').html(data.views)
     }
 })
