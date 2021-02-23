@@ -2,11 +2,9 @@
 /**
  * common
  */
-.hide {
-    display: none
+.search .button {
+    max-width:216px;
 }
-
-
 /**
  *  SP 
 */

@@ -19,12 +19,14 @@ $(function() {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             },
             beforeSend: function() {
-                $('.ajax-load').removeClass('hide');
+                $('#shop').html('<img src="/images/ajax-loading.gif" class="d-block mx-auto" />');
             }
         })
         .done(function(data) {
             if (data.status) {
                 showShop(data);
+            } else {
+                alert('エラーです');
             }
         })
         .fail(function() {
@@ -37,7 +39,6 @@ $(function() {
     }
 
     function showShop(data) {
-        $('.ajax-load').addClass('hide');
-        // TODO: デザイン追加
+        $('#shop').html(data.views)
     }
 })

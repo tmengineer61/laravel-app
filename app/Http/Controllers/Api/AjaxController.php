@@ -12,9 +12,8 @@ class AjaxController extends Controller
     public function searchShop(Request $request)
     {
         $result = [
-            'status' => true,
+            'status' => false,
             'views' => '',
-            'data' => []
         ];
 
         // TODO:バリデート
@@ -22,7 +21,10 @@ class AjaxController extends Controller
         // 検索
         $HotPepperApi = new HotPepperApi();
 
-        $result['data'] = $HotPepperApi->getGourmetShop($request->all());
+        $data = $HotPepperApi->getGourmetShop($request->all());
+        $result['views'] = view('inc.shop_cards', ['shopList' => $data['results']['shop']])->render();
+        $result['status'] = true;
+
 
         return $result;
     }
