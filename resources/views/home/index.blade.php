@@ -10,27 +10,47 @@
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('/css/reset.css') }}">
     <link rel="stylesheet" href="{{ asset('/css/main.css')}}?{{@filemtime('public_path("css/main.css")') }}">
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <script src="{{ asset('js/app.js') }}"></script>
 </head>
 
 <body>
-    <div class="main">
-        <div class="header">
-
-        </div>
-        <div class="contents">
-            <div class="search">
-                <div class="description">
-                    <h1>近くの店を検索する</h1>
-                    <p>取得には現在地を使用します。</p>
-                </div>
-                <button id="search">近くの店を検索する。</button>
-                <div id="shop">
-                    <img src="{{ asset('/images/ajax-loading.gif') }}" class="ajax-load hide"/>
+    <div class="container">
+        <div class="row bg-secondary text-white">
+            <div class="col-xs-12 mx-auto">
+                <div class="header">
+                    <div class="title">
+                        <h1>お店検索API</h1>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="footer">
-            <a href="http://webservice.recruit.co.jp/"><img src="http://webservice.recruit.co.jp/banner/hotpepper-s.gif" alt="ホットペッパー Webサービス" width="135" height="17" border="0" title="ホットペッパー Webサービス"></a>
+        <div class="row">
+            <div class="col-xs-12 mx-auto">
+                <div class="contents">
+                    <div class="search mb-3">
+                        <div class="description">
+                            <p class="text-center">近くの店を検索する</p>
+                            <p class="text-center">※取得には現在地を使用します。</p>
+                        </div>
+                        <div class="button mb-3 mx-auto">
+                            <button type="button" id="search" class="btn btn-outline-secondary btn-block">近くの店を検索する。</button>
+                        </div>
+                        <div id="shop">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row bg-secondary text-white">
+            <div class="col-xs-12 mx-auto">
+                <div class="footer">
+                    <a href="//webservice.recruit.co.jp/">
+                        <img src="//webservice.recruit.co.jp/banner/hotpepper-s.gif"
+                            alt="ホットペッパー Webサービス" width="135" height="17" border="0" title="ホットペッパー Webサービス">
+                    </a>
+                </div>
+            </div>
         </div>
     </div>
     <script type="text/javascript" src="{{asset('/js/jquery-3.5.1.min.js')}}"></script>
