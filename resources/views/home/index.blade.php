@@ -37,7 +37,6 @@
                             <button type="button" id="search" class="btn btn-outline-secondary btn-block">近くの店を検索する。</button>
                         </div>
                         <div id="shop">
-                            <img src="{{ asset('/images/ajax-loading.gif') }}" class="ajax-load hide mx-auto" />
                         </div>
                     </div>
                 </div>
