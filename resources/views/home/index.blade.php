@@ -8,8 +8,7 @@
     <title>ホーム</title>
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="{{ asset('/css/reset.css') }}">
-    <link rel="stylesheet" href="{{ asset('/css/main.css')}}?{{@filemtime('public_path("css/main.css")') }}">
+    <link href="{{ asset('css/all.css') }}" rel="stylesheet">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <script src="{{ asset('js/app.js') }}"></script>
 </head>
