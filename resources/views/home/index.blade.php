@@ -20,7 +20,7 @@
             <div class="col-xs-12 mx-auto">
                 <div class="header">
                     <div class="title">
-                        <h1>お店検索API</h1>
+                        <h1>お店検索</h1>
                     </div>
                 </div>
             </div>
@@ -30,8 +30,7 @@
                 <div class="contents">
                     <div class="search mb-3">
                         <div class="description">
-                            <p class="text-center">近くの店を検索する</p>
-                            <p class="text-center">※取得には現在地を使用します。</p>
+                            <p class="text-center">※取得には<span class="font-weight-bold bb-red">現在地</span>を使用します。</p>
                         </div>
                         <div class="button mb-3 mx-auto">
                             <button type="button" id="search" class="btn btn-outline-secondary btn-block">近くの店を検索する。</button>

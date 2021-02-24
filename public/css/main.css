@@ -1,9 +1,17 @@
-
 /**
  * common
  */
 .search .button {
-    max-width:216px;
+    max-width: 216px;
+}
+
+.bb-orange {
+    background: url('/images/wave-orange.png') bottom repeat-x;
+    background-size: 20px;
+}
+.bb-red {
+    background: url('/images/wave-red.png') bottom repeat-x;
+    background-size: 20px;
 }
 /**
  *  SP 
