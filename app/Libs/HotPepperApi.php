@@ -28,11 +28,12 @@ class HotPepperApi
 
         try {
             // 第2引数に、パラメーターすべて含める
-            $response = Http::get(self::GOURMET_API, $requestParams);
+            $response = Http::timeout(config('config.HOTPEPPER_API.TIMEOUT'))
+                ->retry(config('config.HOTPEPPER_API.RETRY.TIMES'), config('config.HOTPEPPER_API.RETRY.WAIT'))
+                ->get(self::GOURMET_API, $requestParams);
     
             $json = $response->json();    
         } catch(Exception $e) {
-            // TODO: ログ出力
             Log::error('リクエストに失敗しました。' . $e->getMessage());
             return $e;
         }
