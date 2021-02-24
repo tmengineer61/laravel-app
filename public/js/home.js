@@ -1,7 +1,7 @@
 $(function() {
     $('#search').on('click', function() {
         // GeoLocation
-        navigator.geolocation.getCurrentPosition(searchShop,failSearchShop);
+        navigator.geolocation.getCurrentPosition(searchShop,failGetGeolocation);
     })
 
     function searchShop(pos) {
@@ -26,16 +26,16 @@ $(function() {
             if (data.status) {
                 showShop(data);
             } else {
-                alert('エラーです');
+                alert('店舗を検索できませんでした。');
             }
         })
         .fail(function() {
-            // TODO:
+            alert('店舗を検索できませんでした。');
         });
 
     }
-    function failSearchShop(error) {
-        alert('エラーです');
+    function failGetGeolocation() {
+        alert('位置情報を取得できませんでした。位置情報の取得を許可して再度お試しください。');
     }
 
     function showShop(data) {
