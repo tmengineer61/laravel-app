@@ -5,6 +5,13 @@
     max-width: 216px;
 }
 
+.cards::after {
+    content: "";
+    display: block;
+    width: 40rem;  
+    height: 0;
+}
+
 .bb-orange {
     background: url('/images/wave-orange.png') bottom repeat-x;
     background-size: 20px;
