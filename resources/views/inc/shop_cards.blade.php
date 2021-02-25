@@ -1,5 +1,5 @@
 {{-- カード表示を横並びにする：d-flex 折り返す：flex-wrap センター寄せする：justify-content-center --}}
-<div class="d-flex flex-wrap justify-content-center">
+<div class="d-flex flex-wrap justify-content-center cards">
     @foreach($shopList as $shop)
     <div class="card my-1" style="width: 20rem;">
         <div class="card-header">
