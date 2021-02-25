@@ -39,6 +39,6 @@ $(function() {
     }
 
     function showShop(data) {
-        $('#shop').html(data.views)
+        $('#shop').html(data.views);
     }
 })
