@@ -16,7 +16,7 @@
             @endforeach
         </div>
         <div class="card-footer">
-            <p>住所	:{{$shop['address']}}</p>
+            <p>ジャンル：{{$shop['genre']['name']}}</p>
             <p>平均予算 :{{$shop['budget']['average']}}</p>
             <p>営業時間	:{{$shop['open']}}</p>
         </div>
