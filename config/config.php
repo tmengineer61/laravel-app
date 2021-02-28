@@ -7,5 +7,10 @@ return [
       'TIMES' => 3,
       'WAIT' => 100
     ]
-  ]
+    ],
+    'SHOP_CARDS' => [
+      'OPEN' => [
+        'MAX_LENGTH' => 20
+      ]
+    ]
 ];
