@@ -43,13 +43,19 @@
  *  PC
 */
 @media screen and (min-width: 767px) {
+    .card {
+        width: 20rem;
+    }
     .cards::after {
         content: "";
         display: block;
         width: 40rem;
         height: 0;
     }
-
+    .shop-thumb {
+        max-width: auto;
+        max-height: 180px;
+    } 
 }
 
 .cond-content.is-select {
@@ -59,3 +65,12 @@
 /**
  *  SP 
 */
+@media screen and (max-width: 766px) {
+    .card {
+        width: 180px;
+    }
+    .shop-thumb {
+        max-width: 150px;
+        max-height: auto;
+    } 
+}
