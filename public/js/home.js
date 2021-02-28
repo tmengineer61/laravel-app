@@ -9,10 +9,11 @@ $(function() {
         const lat = pos.coords.latitude;
         const lng = pos.coords.longitude;
 
+        var genre = $('.cond-content.is-select').find('[name="genre_code"]').val();
         $.ajax({
             type: 'POST',
             url: '/api/ajax/search/shop',
-            data:{lat:lat, lng:lng},
+            data:{lat:lat, lng:lng, genre:genre},
             dataType: 'json',
             timeout: 5000,
             headers: {
@@ -41,4 +42,18 @@ $(function() {
     function showShop(data) {
         $('#shop').html(data.views);
     }
+
+    $('.cond-content').on('click', function() {
+        // 自身のクラス付け替え
+        if ($(this).hasClass('is-select')) {
+            $(this).toggleClass('is-select');
+            $(this).find('img').toggleClass('is-opacity');
+        // その他のクラス付け替え
+        } else {
+            $(this).parent().find('.cond-content').removeClass('is-select');
+            $(this).parent().find('.cond-content').find('img').addClass('is-opacity');
+            $(this).addClass('is-select');
+            $(this).find('img').removeClass('is-opacity');
+        }
+    })
 })

@@ -53,20 +53,56 @@ table {
     max-width: 216px;
 }
 
-.cards::after {
-    content: "";
-    display: block;
-    width: 40rem;  
-    height: 0;
+.cond-content {
+    position: relative;
+    background: #000;
 }
-
+.cond-content p {
+    position: absolute; /*絶対配置*/
+    color: white; /*文字は白に*/
+    font-weight: bold; /*太字に*/
+    font-size: 1.5rem; /*サイズ2倍*/
+    font-family: Quicksand, sans-serif; /*Google Font*/
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    margin: 0;
+    padding: 0;
+}
+.cond-thumb {
+    max-width: 200px;
+    max-height: auto;
+}
+.cond-thumb.is-opacity {
+    opacity: 0.6;
+}
 .bb-orange {
-    background: url('/images/wave-orange.png') bottom repeat-x;
+    background: url("/images/wave-orange.png") bottom repeat-x;
     background-size: 20px;
 }
 .bb-red {
-    background: url('/images/wave-red.png') bottom repeat-x;
+    background: url("/images/wave-red.png") bottom repeat-x;
     background-size: 20px;
+}
+
+/**
+ *  PC
+*/
+@media screen and (min-width: 767px) {
+    .cards::after {
+        content: "";
+        display: block;
+        width: 40rem;
+        height: 0;
+    }
+
+}
+
+.cond-content.is-select {
+	font-weight: bold;
+    border: solid 5px #e71607;
 }
 /**
  *  SP 

@@ -36,6 +36,7 @@ class AjaxController extends Controller
         $arrParams = [
             'lat' => $request->lat,
             'lng' => $request->lng,
+            'genre' => $request->genre
         ];
 
         // 検索
@@ -58,7 +59,8 @@ class AjaxController extends Controller
     {
         return [
             'lat' => ['required', 'numeric'],
-            'lng' => ['required', 'numeric']
+            'lng' => ['required', 'numeric'],
+            'genre' => ['nullable', 'regex:/^G0/'],
         ];
     }
 }

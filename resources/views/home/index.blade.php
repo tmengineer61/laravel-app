@@ -27,6 +27,19 @@
         <div class="row">
             <div class="col-xs-12 mx-auto">
                 <div class="contents">
+                    <div class="search-condition mt-1">
+                        <div class="cond-contents d-flex flex-wrap justify-content-center">
+                            @foreach ($genreList as $genre)
+                            <div class="cond-content mx-2 my-2">
+                                <p class="cond-name">{{$genre['name']}}</p>
+                                <a href="javascript:void(0)">
+                                    <img src="{{asset($genre['img'])}}" class="cond-thumb is-opacity">
+                                </a>
+                                <input type="hidden" name="genre_code" value="{{$genre['code']}}" />
+                            </div>
+                            @endforeach
+                        </div>
+                    </div>
                     <div class="search mb-3">
                         <div class="description">
                             <p class="text-center">※取得には<span class="font-weight-bold bb-red">現在地</span>を使用します。</p>
