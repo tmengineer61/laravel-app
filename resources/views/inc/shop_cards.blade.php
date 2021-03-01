@@ -19,6 +19,7 @@
             <p>ジャンル：{{$shop['genre']['name']}}</p>
             <p>平均予算 :{{$shop['budget']['average']}}</p>
             <p>営業時間	:{{Str::limit($shop['open'], config('config.SHOP_CARDS.OPEN.MAX_LENGTH'), '...')}}</p>
+            <a href="https://www.google.com/maps/search/?api=1&query={{$shop['lat']}},{{$shop['lng']}}">今すぐ行く！</a>
         </div>
     </div>
     @endforeach
