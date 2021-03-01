@@ -43,7 +43,7 @@ class AjaxController extends Controller
         $HotPepperApi = new HotPepperApi();
 
         $data = $HotPepperApi->getGourmetShop($arrParams);
-        $result['views'] = view('inc.shop_cards', ['shopList' => $data['results']['shop']])->render();
+        $result['views'] = view('inc.shop_cards', ['shopList' => $data['results']['shop'], 'lat' => $request->lat, 'lng' => $request->lng])->render();
         $result['status'] = true;
 
 
