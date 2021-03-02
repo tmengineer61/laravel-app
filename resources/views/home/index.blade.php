@@ -38,17 +38,26 @@
                                 <input type="hidden" name="genre_code" value="{{$genre['code']}}" />
                             </div>
                             @endforeach
+                            <div class="cond-content is-modal mx-2 my-2">
+                                <p class="cond-name">その他</p>
+                                <!-- Button trigger modal -->
+                                <a href="#otherGenreModal" data-toggle="modal" data-target="#otherGenreModal">
+                                    <img src="{{asset('/images/other.png')}}" class="cond-thumb is-opacity">
+                                </a>
+                                <input type="hidden" name="genre_code" value="" />
+                            </div>
                         </div>
                     </div>
-                    <div class="search mb-3">
-                        <div class="description">
-                            <p class="text-center">※取得には<span class="font-weight-bold bb-red">現在地</span>を使用します。</p>
-                        </div>
-                        <div class="button mb-3 mx-auto">
-                            <button type="button" id="search" class="btn btn-outline-secondary btn-block">近くの店を検索する。</button>
-                        </div>
-                        <div id="shop">
-                        </div>
+                </div>
+                <div class="search mb-3">
+                    <div class="description">
+                        <p class="text-center">※取得には<span class="font-weight-bold bb-red">現在地</span>を使用します。</p>
+                    </div>
+                    <div class="button mb-3 mx-auto">
+                        <button type="button" id="search"
+                            class="btn btn-outline-secondary btn-block">近くの店を検索する。</button>
+                    </div>
+                    <div id="shop">
                     </div>
                 </div>
             </div>
@@ -57,12 +66,13 @@
             <div class="col-xs-12 mx-auto">
                 <div class="footer">
                     <a href="//webservice.recruit.co.jp/">
-                        <img src="//webservice.recruit.co.jp/banner/hotpepper-s.gif"
-                            alt="ホットペッパー Webサービス" width="135" height="17" border="0" title="ホットペッパー Webサービス">
+                        <img src="//webservice.recruit.co.jp/banner/hotpepper-s.gif" alt="ホットペッパー Webサービス" width="135"
+                            height="17" border="0" title="ホットペッパー Webサービス">
                     </a>
                 </div>
             </div>
         </div>
+        @include('inc.other_genre')
     </div>
     <script type="text/javascript" src="{{asset('/js/jquery-3.5.1.min.js')}}"></script>
     <script type="text/javascript" src="{{asset('/js/home.js')}}?{{@filemtime('public_path("js/home.js")') }}"></script>
