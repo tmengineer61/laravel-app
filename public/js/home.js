@@ -43,7 +43,7 @@ $(function() {
         $('#shop').html(data.views);
     }
 
-    $('.cond-content').on('click', function() {
+    $('.cond-content').not('.is-modal').on('click', function() {
         // 自身のクラス付け替え
         if ($(this).hasClass('is-select')) {
             $(this).toggleClass('is-select');
@@ -55,5 +55,17 @@ $(function() {
             $(this).addClass('is-select');
             $(this).find('img').removeClass('is-opacity');
         }
+    })
+
+    $('#reflect').on('click', function() {
+        $selectedGenre = $('[id^=genre]:checked');
+        $condContent = $('.cond-content.is-modal');
+        $condContent.find('input').val($selectedGenre.val());
+        // 全ての選択条件をリセットする
+        $condContent.parent().find('.cond-content').removeClass('is-select');
+        $condContent.parent().find('.cond-content').find('img').addClass('is-opacity');
+        // 選択状態にする
+        $condContent.addClass('is-select');
+        $condContent.find('img').removeClass('is-opacity');
     })
 })
