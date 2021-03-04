@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Pagination\LengthAwarePaginator;
+use Illuminate\Support\Collection;
 
 use App\Libs\HotPepperApi;
 
@@ -36,14 +38,20 @@ class AjaxController extends Controller
         $arrParams = [
             'lat' => $request->lat,
             'lng' => $request->lng,
-            'genre' => $request->genre
+            'genre' => $request->genre,
+            'count' => 100
         ];
 
+        // デフォルト1ページ目に設定
+        $page = $request->filled('page') ? $request->page : 1;
         // 検索
         $HotPepperApi = new HotPepperApi();
 
         $data = $HotPepperApi->getGourmetShop($arrParams);
-        $result['views'] = view('inc.shop_cards', ['shopList' => $data['results']['shop'], 'lat' => $request->lat, 'lng' => $request->lng])->render();
+        $shopCollection = new Collection($data['results']['shop']);
+        $shopList = new LengthAwarePaginator($shopCollection->forPage($page, config('config.PAGINATION.ITEM_PER_PAGE')), $shopCollection->count(), config('config.PAGINATION.ITEM_PER_PAGE'), $page, ['path' => '/']);
+
+        $result['views'] = view('inc.shop_cards', ['shopList' => $shopList, 'lat' => $request->lat, 'lng' => $request->lng])->render();
         $result['status'] = true;
 
 
@@ -61,6 +69,7 @@ class AjaxController extends Controller
             'lat' => ['required', 'numeric'],
             'lng' => ['required', 'numeric'],
             'genre' => ['nullable', 'regex:/^G0/'],
+            'page' => ['nullable', 'numeric'],
         ];
     }
 }
