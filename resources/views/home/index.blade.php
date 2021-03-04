@@ -74,6 +74,8 @@
         </div>
         @include('inc.other_genre')
     </div>
+    <input type="hidden" name="lat" id="lat" value="">
+    <input type="hidden" name="lng" id="lng" value="">
     <script type="text/javascript" src="{{asset('/js/jquery-3.5.1.min.js')}}"></script>
     <script type="text/javascript" src="{{asset('/js/home.js')}}?{{@filemtime('public_path("js/home.js")') }}"></script>
 </body>
