@@ -29,7 +29,7 @@
                 <div class="contents">
                     <div class="search-condition mt-1">
                         <div class="cond-contents d-flex flex-wrap justify-content-center">
-                            @foreach ($genreList as $genre)
+                            @foreach ($mainGenreList as $genre)
                             <div class="cond-content mx-2 my-2">
                                 <p class="cond-name">{{$genre['name']}}</p>
                                 <a href="javascript:void(0)">
