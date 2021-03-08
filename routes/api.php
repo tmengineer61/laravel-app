@@ -18,4 +18,4 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::post('/ajax/search/shop', 'Api\AjaxController@searchShop');
+Route::get('/ajax/search/shop', 'Api\AjaxController@searchShop')->middleware('cache.headers:public;max_age=3600');;
