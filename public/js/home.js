@@ -20,14 +20,11 @@ $(function() {
 
     function ajaxSearchShop(lat, lng, genre, page) {
         $.ajax({
-            type: 'POST',
+            type: 'GET',
             url: '/api/ajax/search/shop',
             data:{lat:lat, lng:lng, genre:genre, page:page},
             dataType: 'json',
             timeout: 5000,
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            },
             beforeSend: function() {
                 $('#shop').html('<img src="/images/ajax-loading.gif" class="d-block mx-auto" />');
             }
