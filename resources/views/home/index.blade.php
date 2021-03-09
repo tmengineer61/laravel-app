@@ -18,7 +18,7 @@
             <div class="col-xs-12 mx-auto">
                 <div class="header">
                     <div class="title">
-                        <h1>お店検索</h1>
+                        <h1 class="mt-2">お店検索</h1>
                     </div>
                 </div>
             </div>
