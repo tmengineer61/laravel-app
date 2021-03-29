@@ -83,4 +83,32 @@ $(function() {
         var genre = $('.cond-content.is-select').find('[name="genre_code"]').val();
         ajaxSearchShop(lat, lng, genre, page);
     })
+
+    function sliderSetting() {
+        var width = $(window).width();
+ 
+        // SP表示のみSlick化する
+        if(width <= 766){
+            $('.slider').not('.slick-initialized').slick({
+                autoplay: false,
+                // 画像を中央表示
+                centerMode: true,
+                // 前後の画像をどれだけ表示するか
+                centerPadding: "20px",
+                // 表示する画像の数
+                slideToShow: 1,
+                // 次の画像までの余白をなくす
+                variableWidth: true,
+                // 最後の画像まで表示した後にループさせるか
+                infinite: false,
+            });
+        } else {
+            $('.slider.slick-initialized').slick('unslick');
+        }
+    }
+    sliderSetting();
+ 
+    $(window).resize( function() {
+        sliderSetting();
+    });
 })
