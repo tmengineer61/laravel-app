@@ -10,6 +10,9 @@
     <link href="{{ asset('css/all.css') }}" rel="stylesheet">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <script src="{{ asset('js/app.js') }}"></script>
+    <link href="{{ asset('slick/slick.css') }}" rel="stylesheet" media="screen">
+    <link href="{{ asset('slick/slick-theme.css') }}" rel="stylesheet" media="screen">
+
 </head>
 
 <body>
@@ -27,7 +30,7 @@
             <div class="col-xs-12 mx-auto">
                 <div class="contents">
                     <div class="search-condition mt-1">
-                        <div class="cond-contents d-flex flex-wrap justify-content-center">
+                        <div class="cond-contents d-flex flex-wrap justify-content-center slider">
                             @foreach ($mainGenreList as $genre)
                             <div class="cond-content mx-2 my-2">
                                 <p class="cond-name">{{$genre['name']}}</p>
@@ -76,6 +79,7 @@
     <input type="hidden" name="lat" id="lat" value="">
     <input type="hidden" name="lng" id="lng" value="">
     <script type="text/javascript" src="{{asset('/js/jquery-3.5.1.min.js')}}"></script>
+    <script src="{{ asset('js/common/slick.min.js') }}"></script>
     <script type="text/javascript" src="{{asset('/js/home.js')}}?{{@filemtime('public_path("js/home.js")') }}"></script>
 </body>
 

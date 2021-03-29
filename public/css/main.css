@@ -73,4 +73,19 @@
         max-width: 150px;
         max-height: auto;
     } 
+    .slider img {
+        /* 画像のサイズ指定 */
+        max-width: 200px;
+        max-height: 350px;
+        /* ウィンドウサイズによって高さを指定 */
+        height: 40vw;
+        /* 荒くなるのを制御 */
+        object-fit: cover;
+    }
+
+    /* Slick用 */
+    * {
+        min-height:0;
+        min-width : 0;
+    }
 }
