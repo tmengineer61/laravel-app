@@ -11,7 +11,7 @@ class HomeController extends Controller
 
 
     const LARGE_GENRE_IMAGE = [
-        'G001' => '', // TODO: 画像見つける
+        'G001' => 'images/izakaya.jpeg',
         'G002' => '', // TODO: 画像見つける
         'G003' => '', // TODO: 画像見つける
         'G004' => '', // TODO: 画像見つける
