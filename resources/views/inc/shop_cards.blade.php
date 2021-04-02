@@ -22,7 +22,7 @@
             <p>平均予算 :{{$shop['budget']['average']}}</p>
             <p>営業時間	:{{Str::limit($shop['open'], config('config.SHOP_CARDS.OPEN.MAX_LENGTH'), '...')}}</p>
             <div class="map-link text-center">
-                <a href="https://www.google.com/maps/search/?api=1&query={{$shop['lat']}},{{$shop['lng']}}" class="btn btn-primary">今すぐ行く！</a>
+                <a href="https://www.google.com/maps/dir/?api=1&origin={{$lat}},{{$lng}}&destination={{$shop['name']}}" class="btn btn-primary" target="_blank">今すぐ行く！</a>
             </div>
         </div>
     </div>
