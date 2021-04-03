@@ -103,6 +103,13 @@ return [
         'emergency' => [
             'path' => storage_path('logs/laravel.log'),
         ],
+
+        'upsertHotPepperGenre' => [
+            'driver' => 'daily',
+            'path' => storage_path('logs/upsertHotPepperGenre.log'),
+            'level' => env('LOG_LEVEL', 'debug'),
+            'days' => 14,
+        ]
     ],
 
 ];
