@@ -33,9 +33,9 @@
                         <div class="cond-contents d-flex flex-wrap justify-content-center slider">
                             @foreach ($mainGenreList as $genre)
                             <div class="cond-content mx-2 my-2">
-                                <p class="cond-name">{{$genre['name']}}</p>
+                                <p class="cond-name">{{$genre['title']}}</p>
                                 <a href="javascript:void(0)">
-                                    <img src="{{asset($genre['img'])}}" class="cond-thumb is-opacity">
+                                    <img src="{{asset($genre['image1'])}}" class="cond-thumb is-opacity">
                                 </a>
                                 <input type="hidden" name="genre_code" value="{{$genre['code']}}" />
                             </div>
