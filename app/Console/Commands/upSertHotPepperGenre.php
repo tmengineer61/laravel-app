@@ -2,11 +2,11 @@
 
 namespace App\Console\Commands;
 
+use Exception;
 use App\Libs\HotPepperApi;
 use App\Models\Genre;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Log;
-use Illuminate\Database\Eloquent\Model;
 
 class upSertHotPepperGenre extends Command
 {
@@ -85,8 +85,13 @@ class upSertHotPepperGenre extends Command
                 $insertParams[$index]['image1'] = '';
             }
         }
-        $upSertCount = $CGenre->upsert($insertParams, 'genre_code');
-        Log::info('更新新規追加件数：' . $upSertCount);
+        try {
+            $upSertCount = $CGenre->upsert($insertParams, 'genre_code');
+            Log::info('更新新規追加件数：' . $upSertCount);
+
+        } catch(Exception $e) {
+            Log::error('ホットペッパージャンルマスタの更新に失敗しました。 ' . $e->getMessage());
+        }
 
         // TODO: スペシャルコードのジャンルをDB保持する
         Log::info($this->signature . ': End. ' . date('Y/m/d H:i:s'));
