@@ -13,10 +13,10 @@
                 <div class="cond-other-genre d-flex flex-wrap">
                     @foreach ($otherGenreList as $otherGenre)
                     <div class="othere-genre mx-2">
-                        <input type="radio" name="genre" value="{{$otherGenre['code']}}"
-                            id="genre_{{$otherGenre['code']}}" {{$loop->first ? 'checked' : ''}}>
-                        <label for="genre_{{$otherGenre['code']}}">
-                            {{$otherGenre['name']}}
+                        <input type="radio" name="genre" value="{{$otherGenre['genre_code']}}"
+                            id="genre_{{$otherGenre['genre_code']}}" {{$loop->first ? 'checked' : ''}}>
+                        <label for="genre_{{$otherGenre['genre_code']}}">
+                            {{$otherGenre['title']}}
                         </label>
                     </div>
                     @endforeach
