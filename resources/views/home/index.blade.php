@@ -17,7 +17,7 @@
 
 <body>
     <div class="container">
-        <div class="row bg-secondary text-white">
+        <div class="row header-row bg-secondary text-white">
             <div class="col-xs-12 mx-auto">
                 <div class="header">
                     <div class="title">
@@ -26,7 +26,7 @@
                 </div>
             </div>
         </div>
-        <div class="row">
+        <div class="row main-row">
             <div class="col-xs-12 mx-auto">
                 <div class="contents">
                     <div class="search-condition mt-1">
@@ -64,7 +64,7 @@
                 </div>
             </div>
         </div>
-        <div class="row bg-secondary text-white">
+        <div class="row footer-row bg-secondary text-white">
             <div class="col-xs-12 mx-auto">
                 <div class="footer">
                     <a href="//webservice.recruit.co.jp/">
