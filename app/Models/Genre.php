@@ -13,4 +13,9 @@ class Genre extends Model
 
     protected $primaryKey = 'genre_code';
 
+    // auto increment じゃないPrimaryKeyの場合は、stringに設定する
+    // PrimaryKeyの値が勝手にintにキャストされてしまうのを防ぐ
+    protected $keyType = 'string';
+
+
 }
