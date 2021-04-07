@@ -37,7 +37,7 @@
                                 <a href="javascript:void(0)">
                                     <img src="{{asset($genre['image1'])}}" class="cond-thumb is-opacity">
                                 </a>
-                                <input type="hidden" name="genre_code" value="{{$genre['code']}}" />
+                                <input type="hidden" name="genre_code" value="{{$genre['genre_code']}}" />
                             </div>
                             @endforeach
                             <div class="cond-content is-modal mx-2 my-2">
