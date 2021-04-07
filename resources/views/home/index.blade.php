@@ -29,7 +29,8 @@
         <div class="row main-row">
             <div class="col-xs-12 mx-auto">
                 <div class="contents">
-                    <div class="search-condition mt-1">
+                    {{-- スライダーのwidth:100%の時の余白を消すために、overflow-hiddenする --}}
+                    <div class="search-condition mt-1 overflow-hidden">
                         <div class="cond-contents d-flex flex-wrap justify-content-center slider">
                             @foreach ($mainGenreList as $genre)
                             <div class="cond-content mx-2 my-2">
