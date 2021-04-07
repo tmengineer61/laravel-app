@@ -1,6 +1,22 @@
 /**
  * common
  */
+ html, body {
+    height: 100%;
+}
+.container {
+    height: 100%;
+}
+.header-row {
+   height: 60px;
+}
+.main-row {
+   /* 100% - ヘッダーの高さ＋フッターの高さ */
+   min-height: calc(100% - 120px);
+}
+.footer-row {
+   height: 60px;
+}
 .search .button {
     max-width: 216px;
 }
