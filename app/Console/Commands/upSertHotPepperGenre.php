@@ -5,6 +5,7 @@ namespace App\Console\Commands;
 use Exception;
 use App\Libs\HotPepperApi;
 use App\Models\Genre;
+use App\Models\SpecialGenre;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Log;
 
@@ -93,7 +94,28 @@ class upSertHotPepperGenre extends Command
             Log::error('ホットペッパージャンルマスタの更新に失敗しました。 ' . $e->getMessage());
         }
 
-        // TODO: スペシャルコードのジャンルをDB保持する
+        $CSpecialGenre = new SpecialGenre();
+        $insertParams = [];
+        $params = [];
+        $hotPepperApi = new HotPepperApi();
+
+        $data = $hotPepperApi->getSpecialGenre($params);
+        $specialGenreList = $data['results']['special'];
+        foreach ($specialGenreList as $index => $specialGenre) {
+            $insertParams[$index] = [
+                'genre_code' => $specialGenre['code'],
+                'title' => $specialGenre['name'],
+            ];
+        }
+
+        try {
+            $upSertCount = $CSpecialGenre->upsert($insertParams, 'genre_code');
+            Log::info('更新新規追加件数：' . $upSertCount);
+
+        } catch(Exception $e) {
+            Log::error('ホットペッパー特集ジャンルマスタの更新に失敗しました。 ' . $e->getMessage());
+        }
+
         Log::info($this->signature . ': End. ' . date('Y/m/d H:i:s'));
     }
 }
