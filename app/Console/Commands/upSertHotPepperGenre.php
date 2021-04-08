@@ -116,7 +116,6 @@ class upSertHotPepperGenre extends Command
             Log::error('ホットペッパー特集ジャンルマスタの更新に失敗しました。 ' . $e->getMessage());
         }
 
-        Log::info(print_r($specialGenreList, true));
         Log::info($this->signature . ': End. ' . date('Y/m/d H:i:s'));
     }
 }
