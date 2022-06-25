@@ -4,28 +4,28 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Log;
-use Illuminate\Support\Facades\Validator;
 use Illuminate\Pagination\LengthAwarePaginator;
-use Illuminate\Support\Collection;
+use App\Services\HotPepperApiService;
 
-use App\Libs\HotPepperApi;
-
+/**
+ * Ajax用 Controller
+ */
 class AjaxController extends Controller
 {
 
     /**
-     * HotPepperAPi 
+     * @var [HotPepperApiService]
      */
-    private $hotPepperApi;
+    private $hotPepperApiService;
 
     /**
      * コンストラクタ
+     *
+     * @param HotPepperApiService $hotPepperApiService
      */
-    public function __construct(HotPepperApi $hotPepperApi)
+    public function __construct(HotPepperApiService $hotPepperApiService)
     {
-        $this->hotPepperApi = $hotPepperApi;
-        
+        $this->hotPepperApiService = $hotPepperApiService;
     }
 
     /**
@@ -40,54 +40,16 @@ class AjaxController extends Controller
             'status' => false,
             'views' => '',
         ];
-
-        $validator = Validator::make($request->all(), $this->getValidateRules());
-
-        if ($validator->fails()) {
-            Log::error('バリデートに失敗しました。' . print_r($validator->errors(), true));
-            return $result;
-        }
-
-        // 使用するパラメーターのみ指定
-        $arrParams = [
-            'lat' => $request->lat,
-            'lng' => $request->lng,
-            'genre' => $request->genre,
-            'count' => 100
-        ];
-
         // デフォルト1ページ目に設定
         $page = $request->filled('page') ? $request->page : 1;
-        // 検索
-        $data = $this->hotPepperApi->getGourmetShop($arrParams);
 
-        if (!isset($data['results']['shop']) || empty($data['results']['shop'])) {
-            Log::error('APIの取得に失敗しました。');
-            return $result;       
-        }
+        $shopCollection = $this->hotPepperApiService->searchShop($request);
 
-        $shopCollection = new Collection($data['results']['shop']);
         $shopList = new LengthAwarePaginator($shopCollection->forPage($page, config('config.PAGINATION.ITEM_PER_PAGE')), $shopCollection->count(), config('config.PAGINATION.ITEM_PER_PAGE'), $page, ['path' => '/']);
 
         $result['views'] = view('inc.shop_cards', ['shopList' => $shopList, 'lat' => $request->lat, 'lng' => $request->lng])->render();
         $result['status'] = true;
 
-
         return $result;
-    }
-
-    /**
-     * バリデートルール
-     * 
-     * @return array バリデートルール
-     */
-    private function getValidateRules()
-    {
-        return [
-            'lat' => ['required', 'numeric'],
-            'lng' => ['required', 'numeric'],
-            'genre' => ['nullable', 'regex:/^G0/'],
-            'page' => ['nullable', 'numeric'],
-        ];
     }
 }

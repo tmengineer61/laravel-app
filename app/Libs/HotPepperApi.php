@@ -2,6 +2,7 @@
 
 namespace App\Libs;
 
+use App\Exceptions\ExternalApiException;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
 
@@ -40,10 +41,10 @@ class HotPepperApi
                 ->retry(config('config.HOTPEPPER_API.RETRY.TIMES'), config('config.HOTPEPPER_API.RETRY.WAIT'))
                 ->get(self::GOURMET_API, $requestParams);
     
-            $json = $response->json();    
+            $json = $response->json();
         } catch(Exception $e) {
             Log::error('リクエストに失敗しました。' . $e->getMessage());
-            return $e;
+            throw new ExternalApiException('Hotpepper Gourmet Api Error.');
         } finally {
             $endTime = microtime(true);
             Log::info(__METHOD__ . ' END. time:' . $endTime - $startTime . '秒');
