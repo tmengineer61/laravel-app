@@ -6,8 +6,8 @@ use Monolog\Formatter\LineFormatter;
 
 class CustomizeFormatter extends LineFormatter
 {
-    const LOG_FORMAT = "%datetime% [%channel%.%level_name%] %message%" . PHP_EOL;
-    const DATE_FORMAT = "Y-m-d H:i:s.v";
+    const LOG_FORMAT = "%datetime% [%channel%.%level_name%] %message% %context%" . PHP_EOL;
+    const DATE_FORMAT = "Y-m-d H:i:s";
 
     /**
      * コンストラクタ
