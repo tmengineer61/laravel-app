@@ -26,8 +26,10 @@ class HotPepperApi
      * @return array $json 取得結果
      * 
      */
-    public function getGourmetShop($params)
+    public function getGourmetShop(array $params)
     {
+        $startTime = microtime(true);
+        Log::info(__METHOD__ . ' START. $params=' . var_export($params, true));
         $requestParams = $params;
         $requestParams['key'] = config('config.RECRUIT_API_KEY');
         $requestParams['format'] = 'json';
@@ -42,6 +44,9 @@ class HotPepperApi
         } catch(Exception $e) {
             Log::error('リクエストに失敗しました。' . $e->getMessage());
             return $e;
+        } finally {
+            $endTime = microtime(true);
+            Log::info(__METHOD__ . ' END. time:' . $endTime - $startTime . '秒');
         }
 
         return $json;
@@ -54,8 +59,11 @@ class HotPepperApi
      * @return array $json ジャンル
      * 
      */
-    public function getGenre($params)
+    public function getGenre(array $params)
     {
+        $startTime = microtime(true);
+        Log::info(__METHOD__ . ' START. $params=' . var_export($params, true));
+
         $requestParams = $params;
         $requestParams['key'] = config('config.RECRUIT_API_KEY');
         $requestParams['format'] = 'json';
@@ -70,6 +78,9 @@ class HotPepperApi
         } catch(Exception $e) {
             Log::error('リクエストに失敗しました。' . $e->getMessage());
             return $e;
+        } finally {
+            $endTime = microtime(true);
+            Log::info(__METHOD__ . ' END. time:' . $endTime - $startTime . '秒');
         }
 
         return $json;   
@@ -82,8 +93,11 @@ class HotPepperApi
      * @return array $json ジャンル
      * 
      */
-    public function getSpecialGenre($params)
+    public function getSpecialGenre(array $params)
     {
+        $startTime = microtime(true);
+        Log::info(__METHOD__ . ' START. $params=' . var_export($params, true));
+
         $requestParams = $params;
         $requestParams['key'] = config('config.RECRUIT_API_KEY');
         $requestParams['format'] = 'json';
@@ -98,6 +112,9 @@ class HotPepperApi
         } catch(Exception $e) {
             Log::error('リクエストに失敗しました。' . $e->getMessage());
             return $e;
+        } finally {
+            $endTime = microtime(true);
+            Log::info(__METHOD__ . ' END. time:' . $endTime - $startTime . '秒');
         }
 
         return $json;   

@@ -53,6 +53,7 @@ return [
             'level' => env('LOG_LEVEL', 'debug'),
             'days' => 14,
             'tap' => [App\Logging\LogTap::class],
+            'permission' => 0777,
         ],
 
         'slack' => [
@@ -89,7 +90,7 @@ return [
 
         'errorlog' => [
             'driver' => 'errorlog',
-            'level' => env('LOG_LEVEL', 'debug'),
+            'level' => 'error',
             'days' => 14,
             'path' => storage_path('logs/error.log'),
             'tap' => [App\Logging\LogTap::class],

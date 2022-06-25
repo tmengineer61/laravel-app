@@ -15,6 +15,20 @@ class AjaxController extends Controller
 {
 
     /**
+     * HotPepperAPi 
+     */
+    private $hotPepperApi;
+
+    /**
+     * コンストラクタ
+     */
+    public function __construct(HotPepperApi $hotPepperApi)
+    {
+        $this->hotPepperApi = $hotPepperApi;
+        
+    }
+
+    /**
      * HotPepperAPIを使用して、近くの店舗を検索する
      * 
      * @param Request $request リクエストパラメーター
@@ -30,7 +44,7 @@ class AjaxController extends Controller
         $validator = Validator::make($request->all(), $this->getValidateRules());
 
         if ($validator->fails()) {
-            Log::info('バリデートに失敗しました。' . print_r($validator->errors(), true));
+            Log::error('バリデートに失敗しました。' . print_r($validator->errors(), true));
             return $result;
         }
 
@@ -45,9 +59,13 @@ class AjaxController extends Controller
         // デフォルト1ページ目に設定
         $page = $request->filled('page') ? $request->page : 1;
         // 検索
-        $HotPepperApi = new HotPepperApi();
+        $data = $this->hotPepperApi->getGourmetShop($arrParams);
 
-        $data = $HotPepperApi->getGourmetShop($arrParams);
+        if (!isset($data['results']['shop']) || empty($data['results']['shop'])) {
+            Log::error('APIの取得に失敗しました。');
+            return $result;       
+        }
+
         $shopCollection = new Collection($data['results']['shop']);
         $shopList = new LengthAwarePaginator($shopCollection->forPage($page, config('config.PAGINATION.ITEM_PER_PAGE')), $shopCollection->count(), config('config.PAGINATION.ITEM_PER_PAGE'), $page, ['path' => '/']);
 
